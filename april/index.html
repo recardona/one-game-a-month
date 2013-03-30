@@ -1,0 +1,38 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+	    <script src="./lib/jaws.js"></script>
+	    <link type="text/css" rel="stylesheet" href="style.css" />
+	    <title>One Game a Month: April</title>
+	</head>
+
+	<script src="main.js"></script>
+	<script src="./src/gameobjects/Bullet.js"></script>
+	<script src="./src/gameobjects/Plane.js"></script>
+	<script src="./src/states/MenuState.js"></script>
+	<script src="./src/states/PlayState.js"></script>
+
+	<body>
+		
+	    <canvas width=768 height=576 id="canvas"></canvas>
+	    
+	    
+	    FPS: <span id="fps"></span>. Move with arrows. Select with Return.
+	
+	    <div id="info">
+	      <h1>One Game a Month: April</h1>
+	      <code>One Game a Month: April</code> was developed by Omar Ferrer and Rogelio E. Cardona-Rivera as part of
+	      <a href="http://www.onegameamonth.com">One Game a Month</a>
+	    </div >
+	
+	    <h1>jaws log</h1>
+	    <div id="jaws-log"></div>
+	
+		<script>
+		var fps = document.getElementById("fps")
+		init();
+		</script>
+	
+	</body>
+</html>
+
