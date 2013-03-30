@@ -7,7 +7,7 @@
  */
 function MenuState() {
 	var index = 0
-	var items = ["Start", "About"]
+	var items = ["Start", "About","FAP"]
 
 	this.setup = function() {
 		index = 0
@@ -28,6 +28,11 @@ function MenuState() {
 		jaws.on_keydown(["enter", "space"], function() {
 			if (items[index] == "Start") {
 				jaws.switchGameState(PlayState, {
+					fps : 60
+				})
+			}
+			else if (items[index] == "FAP") {
+				jaws.switchGameState(FAPState, {
 					fps : 60
 				})
 			}
