@@ -23,7 +23,7 @@ function Dude(x, y) {
 		anchor : "center",
 		scale : 1.0
 	});
-	this.sprite.setImage(this.anim_walk.next);
+        this.sprite.setImage(this.anim_walk.next());
 	
 	
 
