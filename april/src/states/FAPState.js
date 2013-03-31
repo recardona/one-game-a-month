@@ -47,6 +47,8 @@ function FAPState() {
 
 		if (jaws.pressed("space")) {
 			faps.push(new FAP(getRandomArbitrary(0,jaws.width),getRandomArbitrary(0,jaws.height)));
+			sprite_sheet = new jaws.SpriteSheet({image: "./assets/art/charzera_0.png", frame_size: [14,3] })
+			//faps.push(new jaws.Sprite{image:sprite_sheet[0],x:10,y:10})
 		}
 
 		forceInsideCanvas(player);
@@ -91,4 +93,3 @@ function FAPState() {
 	}
 
 }
-

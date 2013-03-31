@@ -10,6 +10,10 @@ function MenuState() {
 	var items = ["Start", "About","FAP"]
 
 	this.setup = function() {
+		new jaws.Animation({sprite_sheet: "./assets/art/charzera_0.png", frame_size: [11,15], frame_duration: 100})
+		sprite_sheet = new jaws.SpriteSheet({image: "./assets/art/charzera_0.png", frame_size: [25,45] })
+		frame0 = sprite_sheet[0]
+		
 		index = 0
 		jaws.on_keydown(["down", "s"], function() {
 			index++;
