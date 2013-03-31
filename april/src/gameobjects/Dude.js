@@ -1,20 +1,40 @@
 /**
- * This is what the Plane (@see Plane.js) shoots.
- * @param {Object} x the starting x coordinate for this Bullet
- * @param {Object} y the starting y coordinate for this Bullet
+ * The dude.
+ * @param {Object} x the starting x coordinate for this Dude
+ * @param {Object} y the starting y coordinate for this Dude
  */
 function Dude(x, y) {
-	this.x = x;
-	this.y = y;
+
+	var dude_sprite_sheet = new jaws.Animation({
+		sprite_sheet : "./assets/art/charzera_0_firstRow.png",
+		frame_size : [25, 45],
+		loop : true
+	});
+
+	/* Sprite attributes */
+	this.facingLeft = false;
+	
+	//slices 0-7
+	this.anim_walk = dude_sprite_sheet.slice(0, 8);
+	
+	this.sprite = new jaws.Sprite({
+		x : x,
+		y : y,
+		anchor : "center",
+		scale : 1.0
+	});
+	this.sprite.setImage(this.anim_walk.next);
+	
+	
+
+	/* Game logic attributes */
+	this.can_fire = false;
 
 	this.update = function() {
-		this.x += 4;
-		//upon firing, keep moving toward the right
+		
 	}
 
 	this.draw = function() {
-		sprite_sheet = new jaws.SpriteSheet({image: "./assets/art/charzera_0.png", frame_size: [14,3] })
-		sprite_sheet.frames.length  // 14
-		
+		this.sprite.draw();
 	}
 }

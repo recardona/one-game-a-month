@@ -4,7 +4,7 @@
  *
  */
 function PlayState() {
-	
+
 	var player;
 	//generic container for all bullets
 	var bullets = new jaws.SpriteList();
@@ -12,7 +12,7 @@ function PlayState() {
 	this.setup = function() {
 
 		// Player setup.
-		player = new Plane(jaws.width / 2, jaws.height / 2);
+		player = new Dude(jaws.width / 2, jaws.height / 2);
 		console.log("Log: Player initialized");
 
 		// To quit, press 'esc'
@@ -25,20 +25,34 @@ function PlayState() {
 	}
 
 	this.update = function() {
-		
+
 		//if there are any bullets, call update on each of them.
 		bullets.update();
 
 		if (jaws.pressed("left")) {
 			player.sprite.x -= 2;
+			player.sprite.setImage(player.anim_walk.next());
+
+			if (!player.facingLeft) {
+				player.sprite.flip();
+				player.facingLeft = true;
+			}
+
 		} else if (jaws.pressed("right")) {
 			player.sprite.x += 2;
+			player.sprite.setImage(player.anim_walk.next());
+			
+			if (player.facingLeft) {
+				player.sprite.flip();
+				player.facingLeft = false;	
+			}
+			
 		}
 
 		if (jaws.pressed("up")) {
-			player.sprite.y -= 2;
+			//do nothing for now
 		} else if (jaws.pressed("down")) {
-			player.sprite.y += 2;
+			//do nothing for now
 		}
 
 		if (jaws.pressed("space")) {
@@ -53,10 +67,10 @@ function PlayState() {
 		}
 
 		forceInsideCanvas(player);
-		
+
 		// delete items for which isOutsideCanvas(item) is true
 		bullets.removeIf(isOutsideCanvas);
-		
+
 		fps.innerHTML = jaws.game_loop.fps;
 	}
 
